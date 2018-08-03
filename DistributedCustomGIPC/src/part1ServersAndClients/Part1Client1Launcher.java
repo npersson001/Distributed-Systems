@@ -1,0 +1,22 @@
+package part1ServersAndClients;
+
+import assignments.util.A4TraceUtility;
+import examples.gipc.counter.customization.ACustomCounterClient;
+import examples.gipc.counter.customization.ATracingFactorySetter;
+import examples.gipc.counter.customization.FactorySetterFactory;
+import examples.gipc.counter.layers.AMultiLayerCounterClient;
+import examples.gipc.counter.layers.AMultiLayerCounterClient1;
+import main.ANilsTracingFactorySetter;
+import util.annotations.Comp533Tags;
+import util.annotations.Tags;
+
+@Tags({Comp533Tags.EXPLICIT_RECEIVE_CLIENT1})
+public class Part1Client1Launcher extends AMultiLayerCounterClient1 {
+	public static void main (String[] args) {
+//		util.trace.port.objects.ObjectTraceUtility.setTracing();
+		assignments.util.A4TraceUtility.setTracing();
+		FactorySetterFactory.setSingleton(new Part1TracingFactorySetter());
+		ACustomCounterClient.launch(CLIENT1_NAME);
+	}
+
+}
